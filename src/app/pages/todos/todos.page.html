@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color="medium">
+    <ion-title text-center>todos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" (click)="showTodo = !showTodo">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-item [hidden]="showTodo">
+    <ion-label position="floating" color="medium">To do</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+</ion-content>
