@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { TodosService } from 'src/app/services/todos.service';
+import { Todo } from 'src/app/Models/Todo';
 
 @Component({
   selector: 'app-todos',
@@ -6,10 +9,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todos.page.scss'],
 })
 export class TodosPage implements OnInit {
-  showTodo: boolean = true
-  constructor() { }
+  todos: Array<Todo>;
+  showTodo: boolean = true;
+
+  todoForm = this.formBuilder.group({
+    body: ['', Validators.required]
+  })
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private todoService: TodosService
+  ) { }
+
+  get body(): AbstractControl {
+    return this.todoForm.get("body");
+  }
+  addTodo(): void {
+    this.todoService.addTodo({ body: this.body.value })
+  }
+  removeTodo(index: number): void {
+    this.todoService.removeTodo(index)
+  }
+
+  completeTodo(todo: Todo) {
+    this.todoService.completeTodo(todo)
+  }
+
+  getTodos(): void {
+    this.todoService.getTodos().subscribe(todos => this.todos = todos)
+  }
 
   ngOnInit() {
+    this.getTodos()
   }
 
 }
