@@ -25,7 +25,10 @@ export class TodosPage implements OnInit {
     return this.todoForm.get("body");
   }
   addTodo(): void {
-    this.todoService.addTodo({ body: this.body.value })
+    if (this.body.value != "") {
+      this.showTodo = !this.showTodo
+      this.todoService.addTodo({ body: this.body.value })
+    }
   }
   removeTodo(index: number): void {
     this.todoService.removeTodo(index)
