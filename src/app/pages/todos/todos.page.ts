@@ -36,6 +36,8 @@ export class TodosPage implements OnInit {
 
   completeTodo(todo: Todo) {
     this.todoService.completeTodo(todo)
+    document.querySelector("ion-item-sliding").closeOpened()
+
   }
 
   getTodos(): void {

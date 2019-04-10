@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class TodosService {
-  todos: Array<Todo> = [];
+  todos: Array<Todo> = [{ body: "walk the dog", completed: false }];
   constructor() { }
 
   removeTodo(index: number): void {
