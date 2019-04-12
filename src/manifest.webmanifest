@@ -1,8 +1,8 @@
 {
   "name": "Todionic",
   "short_name": "Todionic",
-  "theme_color": "#000",
-  "background_color": "#000",
+  "theme_color": "#7044ff",
+  "background_color": "#7044ff",
   "display": "fullscreen",
   "scope": "/",
   "start_url": "/",
